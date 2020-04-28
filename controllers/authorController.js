@@ -4,10 +4,6 @@ var Book = require('../models/book');
 const { check, validationResult } = require('express-validator');
 const { body } = require('express-validator');
 
-// Display list of all Authors.
-// exports.author_list = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author list');
-// };
 
 // Display list of all Authors.
 exports.author_list = function(req, res, next) {
@@ -23,11 +19,6 @@ exports.author_list = function(req, res, next) {
   
   };
 
-
-// Display detail page for a specific Author.
-// exports.author_detail = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author detail: ' + req.params.id);
-// };
 
 // Display detail page for a specific Author.
 exports.author_detail = function(req, res, next) {
@@ -56,20 +47,10 @@ exports.author_detail = function(req, res, next) {
 
 
 // Display Author create form on GET.
-// exports.author_create_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author create GET');
-// };
-
-// Display Author create form on GET.
 exports.author_create_get = function(req, res, next) {       
     res.render('author_form', { title: 'Create Author'});
 };
 
-
-// Handle Author create on POST.
-// exports.author_create_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author create POST');
-// };
 
 // Handle Author create on POST.
 exports.author_create_post = [
@@ -131,11 +112,6 @@ exports.author_create_post = [
 
 
 // Display Author delete form on GET.
-// exports.author_delete_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author delete GET');
-// };
-
-// Display Author delete form on GET.
 exports.author_delete_get = function(req, res, next) {
 
     async.parallel({
@@ -156,11 +132,6 @@ exports.author_delete_get = function(req, res, next) {
 
 };
 
-
-// Handle Author delete on POST.
-// exports.author_delete_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author delete POST');
-// };
 
 // Handle Author delete on POST.
 exports.author_delete_post = function(req, res, next) {
@@ -193,11 +164,6 @@ exports.author_delete_post = function(req, res, next) {
 
 
 // Display Author update form on GET.
-// exports.author_update_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author update GET');
-// };
-
-// Display Author update form on GET.
 exports.author_update_get = function (req, res, next) {
 
     Author.findById(req.params.id, function (err, author) {
@@ -213,11 +179,6 @@ exports.author_update_get = function (req, res, next) {
     });
 };
 
-
-// Handle Author update on POST.
-// exports.author_update_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Author update POST');
-// };
 
 // Handle Author update on POST.
 exports.author_update_post = [

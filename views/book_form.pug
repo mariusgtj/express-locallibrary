@@ -23,7 +23,12 @@ block content
       select#author.form-control(type='select' placeholder='Select author' name='author' required='true' )
         for author in authors
           if book
-            //- Handle GET form, where book.author is an object, and POST form, where it is a string.
+            //- Handle GET form, where book.author is an object, and POST form, where it is a string:
+            //- If there is an error in the submitted form, then, when the form is to be re-rendered, 
+            //- the new book's author is identified only with a string (the value of the selected option in the list 
+            //- of authors). By contrast, the existing books' authors have _id properties that are not strings. 
+            //- So to compare the new with the existing we must cast each existing book's author's _id to a string, as shown below.
+            
             option(
               value=author._id
               selected=(

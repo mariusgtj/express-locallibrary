@@ -4,7 +4,9 @@ block content
   h1 #{title}: #{author.name}
   p= author.lifespan
   
-  if author_books.length
+  // if author_books exists, books are exposed and you are prompt to delete those books
+  // if author_books does not exists, books are not exposed but you are prompt to think one more time before deleting books
+  if author_books.length 
   
     p #[strong Delete the following books before attempting to delete this author.]
   
@@ -18,7 +20,7 @@ block content
           a(href=book.url) #{book.title}
         dd #{book.summary}
 
-  else
+  else 
     p Do you really want to delete this Author?
     
     form(method='POST' action='')

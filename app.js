@@ -9,8 +9,6 @@ var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 require('dotenv').config();
-// console.log(process.env);
-console.log(process.env.NODE_ENV);
 
 var compression = require('compression');
 var helmet = require('helmet');

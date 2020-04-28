@@ -46,11 +46,6 @@ exports.index = function(req, res) {
 };
 
 
-// // Display list of all books.
-// exports.book_list = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book list');
-// };
-
 // Display list of all Books.
 exports.book_list = function(req, res, next) {
 
@@ -64,11 +59,6 @@ exports.book_list = function(req, res, next) {
       
   };
 
-  
-// Display detail page for a specific book.
-// exports.book_detail = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book detail: ' + req.params.id);
-// };
 
 // Display detail page for a specific book.
 exports.book_detail = function(req, res, next) {
@@ -101,11 +91,6 @@ exports.book_detail = function(req, res, next) {
 
 
 // Display book create form on GET.
-// exports.book_create_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book create GET');
-// };
-
-// Display book create form on GET.
 exports.book_create_get = function(req, res, next) { 
       
     // Get all authors and genres, which we can use for adding to our book.
@@ -123,11 +108,6 @@ exports.book_create_get = function(req, res, next) {
     
 };
 
-
-// Handle book create on POST.
-// exports.book_create_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book create POST');
-// };
 
 // Handle book create on POST.
 exports.book_create_post = [
@@ -204,11 +184,6 @@ exports.book_create_post = [
 
 
 // Display Book delete form on GET.
-// exports.book_delete_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book delete GET');
-// };
-
-// Display Book delete form on GET.
 exports.book_delete_get = function(req, res, next) {
 
     async.parallel({
@@ -232,11 +207,6 @@ exports.book_delete_get = function(req, res, next) {
 
 };
 
-
-// Handle book delete on POST.
-// exports.book_delete_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book delete POST');
-// };
 
 // Handle Book delete on POST.
 exports.book_delete_post = function(req, res, next) {
@@ -270,11 +240,6 @@ exports.book_delete_post = function(req, res, next) {
     });
 };
 
-
-// Display book update form on GET.
-// exports.book_update_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book update GET');
-// };
 
 // Display book update form on GET.
 exports.book_update_get = function(req, res, next) {
@@ -311,11 +276,6 @@ exports.book_update_get = function(req, res, next) {
 
 };
 
-
-// Handle book update on POST.
-// exports.book_update_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Book update POST');
-// };
 
 // Handle book update on POST.
 exports.book_update_post = [

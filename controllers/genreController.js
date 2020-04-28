@@ -2,15 +2,9 @@ var Genre = require('../models/genre');
 var Book = require('../models/book');
 var async = require('async');
 
-// const validator = require('express-validator'); //!!!!!!!!!!!!!!!!!!!!!!!!!! Is deprecated
 const { check, validationResult } = require('express-validator');
 const { body } = require('express-validator');
 
-
-// Display list of all Genre.
-// exports.genre_list = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre list');
-// };
 
 // Display list of all Genre.
 exports.genre_list = function(req, res, next) {
@@ -26,11 +20,6 @@ exports.genre_list = function(req, res, next) {
   
   };
 
-
-// Display detail page for a specific Genre.
-// exports.genre_detail = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre detail: ' + req.params.id);
-// };
 
 // Display detail page for a specific Genre.
 exports.genre_detail = function(req, res, next) {
@@ -61,20 +50,10 @@ exports.genre_detail = function(req, res, next) {
 
 
 // Display Genre create form on GET.
-// exports.genre_create_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre create GET');
-// };
-
-// Display Genre create form on GET.
 exports.genre_create_get = function(req, res, next) {     
     res.render('genre_form', { title: 'Create Genre' });
   }
 
-
-// Handle Genre create on POST.
-// exports.genre_create_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre create POST');
-// };
 
 // Handle Genre create on POST.
 exports.genre_create_post =  [
@@ -91,7 +70,7 @@ exports.genre_create_post =  [
     (req, res, next) => {
   
       // Extract the validation errors from a request.
-    //   const errors = validator.validationResult(req);
+    //   const errors = validator.validationResult(req); //!!!!!!!!!!!!!!!!!!!!!!!!!! Is deprecated
       const errors = validationResult(req);
   
       // Create a genre object with escaped and trimmed data.
@@ -133,11 +112,6 @@ exports.genre_create_post =  [
 
 
 // Display Genre delete form on GET.
-// exports.genre_delete_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre delete GET');
-// };
-
-// Display Genre delete form on GET.
 exports.genre_delete_get = function(req, res, next) {
 
     async.parallel({
@@ -158,11 +132,6 @@ exports.genre_delete_get = function(req, res, next) {
 
 };
 
-
-// Handle Genre delete on POST.
-// exports.genre_delete_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre delete POST');
-// };
 
 // Handle Genre delete on POST.
 exports.genre_delete_post = function(req, res, next) {
@@ -198,11 +167,6 @@ exports.genre_delete_post = function(req, res, next) {
 
 
 // Display Genre update form on GET.
-// exports.genre_update_get = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre update GET');
-// };
-
-// Display Genre update form on GET.
 exports.genre_update_get = function(req, res, next) {
 
   Genre.findById(req.params.id, function(err, genre) {
@@ -218,11 +182,6 @@ exports.genre_update_get = function(req, res, next) {
 
 };
 
-
-// Handle Genre update on POST.
-// exports.genre_update_post = function(req, res) {
-//     res.send('NOT IMPLEMENTED: Genre update POST');
-// };
 
 // Handle Genre update on POST.
 exports.genre_update_post = [
