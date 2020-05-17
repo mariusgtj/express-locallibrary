@@ -104,7 +104,4 @@ dist
 .tern-port
 
 #**********************************************
-# mongoDB credentials
-/config/keys.js
-
 .env
