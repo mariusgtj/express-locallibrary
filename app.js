@@ -22,22 +22,23 @@ const app = express();
 // Passport Config
 require('./config/passport')(passport);
 
-// DB Config
-const db = require('./config/keys').mongoURI;
+// // DB Config
+// const db = require('./config/keys').mongoURI;
 
-// Connect to Mongo
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Library MongoDb Connected...'))
-    .catch(err => console.log(err))
+// // Connect to Mongo
+// mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+//     .then(() => console.log('Library MongoDb Connected...'))
+//     .catch(err => console.log(err))
 
 
-// // Set up mongoose connection
+// Set up mongoose connection 
 // var dev_db_url = 'mongodb+srv://dbUser:dbUser123@cluster0-kg7ic.azure.mongodb.net/local_library_prod?retryWrites=true&w=majority'
 // var mongoDB = process.env.MONGODB_URI || dev_db_url;
-// mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.Promise = global.Promise;
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+const mongoDB = process.env.MONGODB_URI
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 // view engine setup
