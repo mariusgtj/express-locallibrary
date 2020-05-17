@@ -1,2 +1,2 @@
 # express-locallibrary
-Local Library website written in Express (Node) - from MDN
+Local Library website written in Express (Node) - MDN documentation

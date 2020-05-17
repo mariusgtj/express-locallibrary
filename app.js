@@ -9,7 +9,6 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 
-
 require('dotenv').config();
 console.log(process.env.NODE_ENV)
 
@@ -22,36 +21,20 @@ const app = express();
 // Passport Config
 require('./config/passport')(passport);
 
-// // DB Config
-// const db = require('./config/keys').mongoURI;
-
-// // Connect to Mongo
-// mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => console.log('Library MongoDb Connected...'))
-//     .catch(err => console.log(err))
-
-
 // Set up mongoose connection 
-// var dev_db_url = 'mongodb+srv://dbUser:dbUser123@cluster0-kg7ic.azure.mongodb.net/local_library_prod?retryWrites=true&w=majority'
-// var mongoDB = process.env.MONGODB_URI || dev_db_url;
 const mongoDB = process.env.MONGODB_URI
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-
 // Express body-parser (!!middleware)
-    // We will get data from forms, so we need to add body-parser middleware
-    // body-parser is included with express
     app.use(express.urlencoded({ extended: false }));
     // This way we can get data from forms with request.body
-
 
 // Express Session (!!middleware)
 app.use(session({
@@ -68,14 +51,14 @@ app.use(passport.session());
 app.use(flash())  // !!Now we have access to request.flash
 
 
-// Global Vars (!!middleware)
+// Global Variables (!!middleware)
         // Since we have access to request.flash, we need to use colors for massages, so we need some global vars
         // These errors will appear when we do redirect !!!
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg') // will call this msg in users.js, when user->save&register->success, before res.redirect to /users/login
   res.locals.error_msg = req.flash('error_msg')
-  res.locals.error = req.flash('error')   // show the flash for passport -> login. The error will be in: req.flash('error') (see minute: 1.16.00 in the video). 
-                          // It goes to messages.ejs, check for error and display it!
+  res.locals.error = req.flash('error')   // shows the flash for passport -> login. The error will be in: req.flash('error'). 
+                          // It goes to messages.pug, check for error and display it!
   next()
 })
 
@@ -97,7 +80,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -108,7 +90,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 module.exports = app;

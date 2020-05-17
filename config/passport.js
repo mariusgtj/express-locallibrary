@@ -7,8 +7,6 @@ const bcrypt = require('bcryptjs'); // is used to Compare passwords
 // Load User model
 const User = require('../models/User');
 
-// This is exactly from the docs!!!
-// Interesting is the syntax for the following module.exports:
 module.exports = function(passport) {
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
@@ -19,7 +17,6 @@ module.exports = function(passport) {
           return done(null, false, { message: 'That email is not registered' });
         }
 
-        // If there is an email, we need to deal with that...
         // Match password
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
@@ -34,12 +31,12 @@ module.exports = function(passport) {
     })
   );
 
-  // This is exactly from the docs!!!
+  // This is from the docs!!!
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
-  // This is exactly from the docs!!!
+  // This is from the docs!!!
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
       done(err, user);

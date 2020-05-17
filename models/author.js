@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-var moment = require('moment');
+const mongoose = require('mongoose');
+const moment = require('moment');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var AuthorSchema = new Schema(
+const AuthorSchema = new Schema(
   {
     first_name: {type: String, required: true, max: 100},
     family_name: {type: String, required: true, max: 100},
@@ -18,9 +18,9 @@ AuthorSchema
 .get(function () {
 
 // To avoid errors in cases where an author does not have either a family name or first name
-// We want to make sure we handle the exception by returning an empty string for that case
+// we want to make sure we handle the exception by returning an empty string for that case
 
-  var fullname = '';
+let fullname = '';
   if (this.first_name && this.family_name) {
     fullname = this.family_name + ', ' + this.first_name
   }
@@ -32,19 +32,11 @@ AuthorSchema
 });
 
 
-// // Virtual for author's lifespan
-// AuthorSchema
-// .virtual('lifespan')
-// .get(function () {
-//   return (this.date_of_birth.getYear() - this.date_of_death.getYear()).toString();
-// });
-
-
 // Virtual for author's lifespan
 AuthorSchema
 .virtual('lifespan')
 .get(function() {
-  var lifetime_string = '';
+  let lifetime_string = '';
   if (this.date_of_birth) {
     lifetime_string = moment(this.date_of_birth).format('MMMM Do, YYYY');
   }
@@ -55,21 +47,6 @@ AuthorSchema
   return lifetime_string;
 });
 
-//***************************************************************** */
-// AuthorSchema
-// .virtual('date_of_birth_formatted')
-// .get(function() {
-//   return moment(this.date_of_birth).format('MMMM Do, YYYY');
-// })
-
-// AuthorSchema
-// .virtual('date_of_death_formatted')
-// .get(function() {
-//   return moment(this.date_of_death).format('MMMM Do, YYYY');
-// })
-//***************************************************************** */
-
-
 
 // Virtual for author's URL
 AuthorSchema
@@ -77,6 +54,7 @@ AuthorSchema
 .get(function () {
   return '/catalog/author/' + this._id;
 });
+
 
 //Export model
 module.exports = mongoose.model('Author', AuthorSchema);

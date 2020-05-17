@@ -12,15 +12,12 @@ const { body } = require('express-validator');
 // GET catalog home page (INDEX).
 // router.get('/', book_controller.index);  //This actually maps to /catalog/ because we import the route with a /catalog prefix
 
-/*  INDEX new, with countDocuments()
-
+/*  
+INDEX new, with countDocuments()
 The index controller function needs to fetch information about how many Book, BookInstance, available BookInstance, 
 Author, and Genre records we have in the database, render this data in a template to create an HTML page, and then return it in an HTTP response.
-
 The async.parallel() method is passed an object with functions for getting the counts for each of our models. These functions are all started at the same time. When all of them have completed the final callback is invoked with the counts in the results parameter (or an error).
-
 On success the callback function calls res.render(), specifying a view (template) named 'index' and an object containing the data that is to be inserted into it (this includes the results object that contains our model counts). The data is supplied as key-value pairs, and can be accessed in the template using the key.
-
 */
 exports.index = function(req, res) {   
     
@@ -55,9 +52,8 @@ exports.book_list = function(req, res, next) {
         if (err) { return next(err); }
         //Successful, so render
         res.render('book_list', { title: 'Book List', book_list: list_books });
-      });
-      
-  };
+      });      
+};
 
 
 // Display detail page for a specific book.
@@ -86,7 +82,6 @@ exports.book_detail = function(req, res, next) {
         // Successful, so render.
         res.render('book_detail', { title: results.book.title, book: results.book, book_instances: results.book_instance } );
     });
-
 };
 
 
@@ -105,7 +100,6 @@ exports.book_create_get = function(req, res, next) {
         if (err) { return next(err); }
         res.render('book_form', { title: 'Create Book', authors: results.authors, genres: results.genres });
     });
-    
 };
 
 
@@ -273,7 +267,6 @@ exports.book_update_get = function(req, res, next) {
             }
             res.render('book_form', { title: 'Update Book', authors: results.authors, genres: results.genres, book: results.book });
         });
-
 };
 
 

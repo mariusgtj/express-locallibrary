@@ -17,8 +17,7 @@ exports.genre_list = function(req, res, next) {
         //Successful, so render
         res.render('genre_list', { title: 'Genre List', genre_list: list_genres });
       });
-  
-  };
+};
 
 
 // Display detail page for a specific Genre.
@@ -59,25 +58,21 @@ exports.genre_create_get = function(req, res, next) {
 exports.genre_create_post =  [
    
     // Validate that the name field is not empty.
-    // validator.body('name', 'Genre name required').trim().isLength({ min: 1 }), //!!!!!!!!!!!!!!!!!!!!!!!!!! Is deprecated
     check('name', 'Genre name required').trim().isLength({ min: 1 }),
     
     // Sanitize (escape) the name field.
-    // validator.sanitizeBody('name').escape(), //!!!!!!!!!!!!!!!!!!!!!!!!!! Is deprecated
     body('name').escape(),
   
     // Process request after validation and sanitization.
     (req, res, next) => {
   
       // Extract the validation errors from a request.
-    //   const errors = validator.validationResult(req); //!!!!!!!!!!!!!!!!!!!!!!!!!! Is deprecated
       const errors = validationResult(req);
   
       // Create a genre object with escaped and trimmed data.
       var genre = new Genre(
         { name: req.body.name }
       );
-  
   
       if (!errors.isEmpty()) {
         // There are errors. Render the form again with sanitized values/error messages.
@@ -86,6 +81,7 @@ exports.genre_create_post =  [
       }
       else {
         // Data from form is valid.
+
         // Check if Genre with same name already exists.
         Genre.findOne({ 'name': req.body.name })
           .exec( function(err, found_genre) {
@@ -101,10 +97,8 @@ exports.genre_create_post =  [
                  if (err) { return next(err); }
                  // Genre saved. Redirect to genre detail page.
                  res.redirect(genre.url);
-               });
-  
-             }
-  
+               }); 
+             }  
            });
       }
     }
@@ -205,7 +199,6 @@ exports.genre_update_post = [
         _id: req.params.id
         }
       );
-
 
       if (!errors.isEmpty()) {
           // There are errors. Render the form again with sanitized values and error messages.

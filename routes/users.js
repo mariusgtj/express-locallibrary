@@ -9,15 +9,13 @@ const passport = require('passport') // Passport is declared in /config/passport
 const User = require('../models/User')
 
 
-
 // Register Get
 router.get('/register', (req, res) => res.render('register'))
-// router.get('/register', (req, res) => res.send('Register'))
 
 
 // Register Post
 router.post('/register', (req, res) => {
-        // GOOD PRACTICE:
+    // GOOD PRACTICE:
     // Testing to see if what we pass in the form is actually the req.body
     // console.log(req.body)
     // res.send('hello')
@@ -45,7 +43,7 @@ router.post('/register', (req, res) => {
     }
 
     // If any of checks before are true, then we want to re-render the registration form, with some stuff in
-    // and in order to let the user know what is going on, we create Partials (separate folder in Views)
+    // and in order to let the user know what is going on, we create Partials for messages (separate folder in Views)
     if(errors.length > 0) {
         res.render('register', {
             errors,
@@ -71,7 +69,7 @@ router.post('/register', (req, res) => {
             });
           } else {
             // We need to create an User, but first need to encrypt the password
-              // Will create a new instance because we do not use user.save()
+              // We will create a new instance because we do not use user.save()
             const newUser = new User({
               name,
               email,
@@ -103,7 +101,6 @@ router.post('/register', (req, res) => {
 
 // Login Get
 router.get('/login', (req, res) => res.render('login'))
-// router.get('/login', (req, res) => res.send('Login'))
 
 
 // Login Post

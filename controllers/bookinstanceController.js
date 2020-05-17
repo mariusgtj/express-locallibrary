@@ -15,8 +15,7 @@ exports.bookinstance_list = function(req, res, next) {
         // Successful, so render
         res.render('bookinstance_list', { title: 'Book Instance List', bookinstance_list: list_bookinstances });
       });
-
-  };
+};
 
 
 // Display detail page for a specific BookInstance.
@@ -34,7 +33,6 @@ exports.bookinstance_detail = function(req, res, next) {
       // Successful, so render.
       res.render('bookinstance_detail', { title: 'Copy: '+bookinstance.book.title, bookinstance:  bookinstance});
     })
-
 };
 
 
@@ -46,8 +44,7 @@ exports.bookinstance_create_get = function(req, res, next) {
       if (err) { return next(err); }
       // Successful, so render.
       res.render('bookinstance_form', {title: 'Create BookInstance', book_list: books});
-    });
-    
+    });   
 };
 
 
@@ -114,7 +111,6 @@ exports.bookinstance_delete_get = function(req, res, next) {
         // Successful, so render.
         res.render('bookinstance_delete', { title: 'Delete BookInstance', bookinstance:  bookinstance});
     })
-
 };
 
 
@@ -127,7 +123,6 @@ exports.bookinstance_delete_post = function(req, res, next) {
         // Success, so redirect to list of BookInstance items.
         res.redirect('/catalog/bookinstances');
         });
-
 };
 
 
@@ -153,7 +148,6 @@ exports.bookinstance_update_get = function(req, res, next) {
             // Success.
             res.render('bookinstance_form', { title: 'Update  BookInstance', book_list : results.books, selected_book : results.bookinstance.book._id, bookinstance:results.bookinstance });
         });
-
 };
 
 
