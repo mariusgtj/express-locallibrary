@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/journal/bootstrap.min.css', rel='stylesheet', integrity='sha384-0d2eTc91EqtDkt3Y50+J9rW3tCXJWw6/lDgf1QNHLlV0fadTyvcA120WPsSOlwga', crossorigin='anonymous')
+    script(src='https://kit.fontawesome.com/fe6aba9d11.js', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Local Library
+  body
+    .container
+      .row.mt-5
+        .col-md-6.m-auto
+          .card.card-body.text-center
+            h1
+              i.fas.fa-book-reader.fa-2x
+              //- i.fas.fa-book.fa-2x
+            h4 Local Library
+            p.mt-2 Create an account or login
+            a.btn.btn-primary.btn-block.mb-2(href='/users/register') Register
+            a.btn.btn-secondary.btn-block(href='/users/login') Login
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6', crossorigin='anonymous')

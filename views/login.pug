@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/journal/bootstrap.min.css', rel='stylesheet', integrity='sha384-0d2eTc91EqtDkt3Y50+J9rW3tCXJWw6/lDgf1QNHLlV0fadTyvcA120WPsSOlwga', crossorigin='anonymous')
+    script(src='https://kit.fontawesome.com/fe6aba9d11.js', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Login Page
+  body
+    .row.mt-5
+      .col-md-6.m-auto
+        .card.card-body
+          h1.text-center.mb-3
+            i.fas.fa-sign-in-alt
+            |   Login
+          include partials/messages
+          form(action='/users/login', method='POST')
+            .form-group
+              label(for='email') Email
+              input#email.form-control(type='email', name='email', placeholder='Enter Email')
+            .form-group
+              label(for='password') Password
+              input#password.form-control(type='password', name='password', placeholder='Enter Password')
+            button.btn.btn-primary.btn-block(type='submit') Login
+          //- p.lead.mt-4
+          p.mt-4
+            | No Account? 
+            a(href='/users/register') Register
+          p
+            | Go   
+            a(href='/') Home
+
+script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n', crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6', crossorigin='anonymous')
