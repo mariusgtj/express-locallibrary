@@ -105,6 +105,6 @@ dist
 
 #**********************************************
 # mongoDB credentials
-config/keys.js
+/config/keys.js
 
 .env
