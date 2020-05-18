@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const MongoStore = require('connect-mongo')(session);
 
 require('dotenv').config();
 console.log(process.env.NODE_ENV)
@@ -29,7 +30,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));      
 app.set('view engine', 'pug');
 
 // Express body-parser (!!middleware)
@@ -40,7 +41,9 @@ app.set('view engine', 'pug');
 app.use(session({
   secret: 'secret',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: db,
+                            ttl: 2 * 24 * 60 * 60 })
 }))
 
 // Passport middleware ---> THIS IS THE PLACE, before flash()!!!

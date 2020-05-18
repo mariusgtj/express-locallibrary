@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 
 // Welcome
-router.get('/', function(req, res) {
+router.get('/', forwardAuthenticated, function(req, res) {
   res.render('welcome', { title: 'Welcome' });
 });
 
-
 // Dashboard
-router.get('/dashboard', function(req, res) {
-  // res.render('index', { title: 'Index Home' });
+router.get('/dashboard', ensureAuthenticated, function(req, res) {
   res.redirect('/catalog');
 });
 
